@@ -77,6 +77,43 @@ public class BlockBlast {
 
             // 2) STUDENT TASK: Find block placement
             /* WRITE YOUR CODE HERE */
+            boolean placed = false;
+            int blockRows = currentBlock.length;
+            int blockColumns = currentBlock[0].length;
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (!gameGrid[i][j]) {
+                        if (i + blockRows <= n && j + blockColumns <= n) {
+                            boolean fits = true;
+                            for (int k = 0; k < blockRows; k++) {
+                                for (int l = 0; l < blockColumns; l++) {
+                                    if (currentBlock[i][j]) {
+                                        if (gameGrid[i + k][j + l]) {
+                                            fits = false;
+                                        }
+                                    }
+                                }
+                                if (!fits) break;
+                            }
+                            if (fits) {
+                                for (int x = 0; x < blockRows; x++) {
+                                    for (int y = 0; y < blockColumns; y++) {
+                                        if (currentBlock[i][j]) {
+                                            gameGrid[i + x][j + y] = true;
+                                        }
+                                    }
+                                }
+                                placed = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!placed) {
+                gameActive = false;
+            }
             
 
 
@@ -104,6 +141,49 @@ public class BlockBlast {
 
             // 3) STUDENT TASK: Clear filled rows/columns
 	    /* WRITE YOUR CODE HERE */
+        boolean[] fullRows = new boolean[n];
+        boolean[] fullCols = new boolean[n];
+
+        for (int r = 0; r < n; r++) {
+            boolean rowFull = true;
+            for (int c = 0; c < n; c++) {
+                if (!gameGrid[r][c]) {
+                    rowFull = false;
+                }
+            }
+            fullRows[r] = rowFull;
+        }
+
+        for (int c = 0; c < n; c++) {
+            boolean colFull = true;
+            for (int r = 0; r < n; r++) {
+                if (!gameGrid[r][c]) {
+                    colFull = false;
+                }
+            }
+            fullCols[c] = colFull;
+        }
+
+
+        int linesCleared = 0;
+
+        for (int r = 0; r < n; r++) {
+            if (fullRows[r]) {
+                linesCleared++;
+                for (int c = 0; c < n; c++) {
+                    gameGrid[r][c] = false;
+                }
+            }
+        }
+
+        for (int c = 0; c < n; c++) {
+            if (fullCols[c]) {
+                linesCleared++;
+                for (int r = 0; r < n; r++) {
+                    gameGrid[r][c] = false;
+                }
+            }
+        }
 
 
 
