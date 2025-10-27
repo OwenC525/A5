@@ -91,6 +91,7 @@ public class BlockBlast {
                                     if (currentBlock[k][l]) {
                                         if (gameGrid[i + k][j + l]) {
                                             fits = false;
+                                            break;
                                         }
                                     }
                                 }
