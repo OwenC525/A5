@@ -31,7 +31,8 @@ public class BlockBlast {
 
         // 1) STUDENT TASK: Initialize game grid
         /* WRITE YOUR CODE HERE */
-
+        int n = Integer.parseInt(args[0]);
+        gameGrid = new boolean[n][n];
 
 
 
