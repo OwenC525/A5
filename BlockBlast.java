@@ -82,13 +82,13 @@ public class BlockBlast {
             int blockColumns = currentBlock[0].length;
 
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < i; j++) {
+                for (int j = 0; j < n; j++) {
                     if (!gameGrid[i][j]) {
                         if (i + blockRows <= n && j + blockColumns <= n) {
                             boolean fits = true;
                             for (int k = 0; k < blockRows; k++) {
                                 for (int l = 0; l < blockColumns; l++) {
-                                    if (currentBlock[i][j]) {
+                                    if (currentBlock[k][l]) {
                                         if (gameGrid[i + k][j + l]) {
                                             fits = false;
                                         }
@@ -99,7 +99,7 @@ public class BlockBlast {
                             if (fits) {
                                 for (int x = 0; x < blockRows; x++) {
                                     for (int y = 0; y < blockColumns; y++) {
-                                        if (currentBlock[i][j]) {
+                                        if (currentBlock[x][y]) {
                                             gameGrid[i + x][j + y] = true;
                                         }
                                     }
@@ -238,18 +238,18 @@ public class BlockBlast {
 
 
         // SUBMITTING TEST STATEMENT. YOU MUST UNCOMMENT OUT UPON SUBMISSION
-        // System.out.println("Game Board:");
-        // for (int i = 0; i < gameGrid.length; i++) {
-        //     for (int j = 0; j < gameGrid[i].length; j++) {
-        //         if (gameGrid[i][j]) {
-        //             System.out.print("X ");
-        //         } else {
-        //             System.out.print("_ ");
-        //         }
-        //     }
-        //     System.out.println();
-        // }
-        // System.out.println("Final Score: " + score);
+         System.out.println("Game Board:");
+         for (int i = 0; i < gameGrid.length; i++) {
+             for (int j = 0; j < gameGrid[i].length; j++) {
+                 if (gameGrid[i][j]) {
+                     System.out.print("X ");
+                 } else {
+                     System.out.print("_ ");
+                 }
+             }
+             System.out.println();
+         }
+         System.out.println("Final Score: " + score);
         // END OF SUBMITTING PRINT STATEMENTS
     }
 }
