@@ -44,7 +44,7 @@ public class GlassBridge {
             char step = path[i];
 
             //decides row based on l/r
-            int row;
+            int row = 0;
             if (step == 'L') {
                 row = 0;
             } else if (step == 'R') {
