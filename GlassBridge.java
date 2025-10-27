@@ -24,6 +24,43 @@ public class GlassBridge {
 
     public static void main(String[] args) {
         
+        //2 rows; 0 = left row, 1 = right row; 10 cols
+        boolean[][] bridge = new boolean[2][10];
+
+        //checks booleans col by col
+        int index = 0;
+        for (int i = 0; i < 10; i++) {
+            bridge[0][i] = Boolean.parseBoolean(args[index]);
+            index++;
+            bridge[1][i] = Boolean.parseBoolean(args[index]);
+            index++;
+        }
+
+        //reads 10 l/r
+        char[] path = new char[10];
         
+        boolean safe = true;
+        for (int i = 0; i < 10; i++) {
+            char step = path[i];
+
+            //decides row based on l/r
+            int row;
+            if (step == 'L') {
+                row = 0;
+            } else if (step == 'R') {
+                row = 1;
+            }
+
+            if (!bridge[row][i]) {
+                safe = false;
+            }
+        }
+
+        if (safe) {
+            System.out.println("Safe");
+        } else {
+            System.out.println("Unsafe");
+        }
+
     }
 }
