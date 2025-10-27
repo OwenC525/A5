@@ -38,6 +38,10 @@ public class GlassBridge {
 
         //reads 10 l/r
         char[] path = new char[10];
+        for (int i = 0; i < 10; i++) {
+            path[i] = args[index].charAt(0);
+            index++;
+        }
         
         boolean safe = true;
         for (int i = 0; i < 10; i++) {
