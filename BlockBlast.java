@@ -211,7 +211,7 @@ public class BlockBlast {
 
             // 4) STUDENT TASK: Update score
             /* WRITE YOUR CODE HERE */
-
+            score += 10 * linesCleared;
 
 
 
