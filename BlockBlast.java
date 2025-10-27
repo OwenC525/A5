@@ -81,21 +81,22 @@ public class BlockBlast {
             int blockRows = currentBlock.length;
             int blockColumns = currentBlock[0].length;
 
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (!gameGrid[i][j]) {
+            for (int i = 0; i < n && !placed; i++) {
+                for (int j = 0; j < n && !placed; j++) {
+
+                    
                         if (i + blockRows <= n && j + blockColumns <= n) {
                             boolean fits = true;
-                            for (int k = 0; k < blockRows; k++) {
+                            for (int k = 0; k < blockRows && fits; k++) {
                                 for (int l = 0; l < blockColumns; l++) {
-                                    if (currentBlock[k][l]) {
-                                        if (gameGrid[i + k][j + l]) {
+                                    if (currentBlock[k][l] && gameGrid[i + k][j + l]) {
+                                        
                                             fits = false;
                                             break;
-                                        }
+                                        
                                     }
                                 }
-                                if (!fits) break;
+
                             }
                             if (fits) {
                                 for (int x = 0; x < blockRows; x++) {
@@ -108,12 +109,13 @@ public class BlockBlast {
                                 placed = true;
                             }
                         }
-                    }
+                    
                 }
             }
 
             if (!placed) {
                 gameActive = false;
+                break;
             }
             
 
